@@ -14,7 +14,10 @@ const schema = z.object({
   message: z.string().optional(),
 })
 
-export async function submitVenueEnquiry(formData: FormData) {
+export async function submitVenueEnquiry(
+  prevState: { success: boolean; error?: string } | null,
+  formData: FormData
+) {
   const raw = Object.fromEntries(formData)
   const parsed = schema.safeParse(raw)
 
