@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, Printer } from 'lucide-react'
 import { Button } from '../ui/Button'
 
-export const Nav: React.FC = () => {
+export default function Nav() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 

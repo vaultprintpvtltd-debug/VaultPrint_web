@@ -3,17 +3,14 @@ import { z } from 'zod'
 import { createServerSupabaseClient } from '@/lib/supabase'
 
 const schema = z.object({
-  brand_name: z.string().min(2),
-  campaign_type: z.string(),
-  target_locations: z.string().min(2),
-  target_audience: z.string(),
-  budget_range: z.string(),
-  contact_name: z.string().min(2),
+  name: z.string().min(2),
   email: z.string().email(),
-  phone: z.string().min(10),
+  phone: z.string().optional(),
+  subject: z.string(),
+  message: z.string().min(20),
 })
 
-export async function submitAdvertisingEnquiry(formData: FormData) {
+export async function submitContactMessage(formData: FormData) {
   const raw = Object.fromEntries(formData)
   const parsed = schema.safeParse(raw)
 
@@ -22,13 +19,13 @@ export async function submitAdvertisingEnquiry(formData: FormData) {
   }
 
   const supabase = createServerSupabaseClient()
-  const { error } = await supabase.from('ad_enquiries').insert(parsed.data)
+  const { error } = await supabase.from('contact_messages').insert(parsed.data)
 
   if (error) {
     return { success: false, error: 'Something went wrong. Please try again.' }
   }
 
-  // TODO: send admin notification via AWS SES
+  // TODO: send admin notification + auto-reply via AWS SES
 
   return { success: true }
 }

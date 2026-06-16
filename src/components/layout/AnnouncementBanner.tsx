@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { X } from 'lucide-react'
 
-export const AnnouncementBanner: React.FC = () => {
+export default function AnnouncementBanner() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {

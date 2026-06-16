@@ -1,9 +1,9 @@
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/react'
-import { Nav } from '@/components/layout/Nav'
-import { Footer } from '@/components/layout/Footer'
-import { AnnouncementBanner } from '@/components/layout/AnnouncementBanner'
+import Nav from '@/components/layout/Nav'
+import Footer from '@/components/layout/Footer'
+import AnnouncementBanner from '@/components/layout/AnnouncementBanner'
 import './globals.css'
 
 export const metadata = {
