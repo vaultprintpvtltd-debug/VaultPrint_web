@@ -13,7 +13,10 @@ const schema = z.object({
   motivation: z.string().min(50),
 })
 
-export async function submitFranchiseApplication(formData: FormData) {
+export async function submitFranchiseApplication(
+  prevState: { success: boolean; error?: string } | null,
+  formData: FormData
+) {
   const raw = Object.fromEntries(formData)
   const parsed = schema.safeParse(raw)
 

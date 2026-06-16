@@ -7,6 +7,7 @@ interface FormFieldProps extends React.InputHTMLAttributes<HTMLInputElement | HT
   error?: string
   as?: 'input' | 'textarea' | 'select'
   options?: { value: string; label: string }[]
+  rows?: number
 }
 
 export const FormField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement, FormFieldProps>(
@@ -32,7 +33,7 @@ export const FormField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement
             id={id}
             ref={ref as React.Ref<HTMLTextAreaElement>}
             className={inputClasses}
-            rows={4}
+            rows={props.rows || 4}
             {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
           />
         )}
