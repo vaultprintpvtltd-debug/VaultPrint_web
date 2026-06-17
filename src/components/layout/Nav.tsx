@@ -14,6 +14,7 @@ export default function Nav() {
     { name: 'How It Works', href: '/how-it-works' },
     { name: 'For Venues', href: '/for-venues' },
     { name: 'Franchise', href: '/franchise' },
+    { name: 'Advertising', href: '/advertising' },
     { name: 'Pricing', href: '/pricing' },
     { name: 'About & Contact', href: '/about' },
   ]

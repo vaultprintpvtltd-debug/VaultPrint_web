@@ -13,7 +13,12 @@ const schema = z.object({
   phone: z.string().min(10),
 })
 
-export async function submitAdvertisingEnquiry(formData: FormData) {
+export type AdEnquiryState = {
+  success?: boolean
+  error?: string
+}
+
+export async function submitAdvertisingEnquiry(prevState: AdEnquiryState | null, formData: FormData) {
   const raw = Object.fromEntries(formData)
   const parsed = schema.safeParse(raw)
 
