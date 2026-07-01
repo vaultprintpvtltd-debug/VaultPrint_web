@@ -22,14 +22,14 @@ export default function AnnouncementBanner() {
   if (!isVisible) return null
 
   return (
-    <div className="relative w-full bg-brand-navy text-white text-xs sm:text-sm font-medium py-2.5 px-8 flex items-center justify-center text-center transition-all duration-300 z-50">
-      <Link href="/how-it-works" className="hover:underline flex items-center justify-center gap-1.5 leading-snug">
-        <span>Now available across Jharkhand campuses — Find a kiosk near you</span>
-        <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+    <div className="relative w-full bg-navy-950 text-white text-xs sm:text-sm font-medium py-2.5 px-8 flex items-center justify-center text-center transition-all duration-300 z-50">
+      <Link href="/how-it-works" className="group flex items-center justify-center gap-1.5 leading-snug">
+        <span className="group-hover:underline underline-offset-4 decoration-teal-300">Now available across Jharkhand campuses — Find a kiosk near you</span>
+        <span className="text-teal-300 inline-block transition-transform group-hover:translate-x-1">→</span>
       </Link>
       <button
         onClick={handleDismiss}
-        className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-white transition-colors"
+        className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-navy-400 hover:text-white transition-colors"
         aria-label="Dismiss banner"
       >
         <X size={16} />

@@ -1,62 +1,98 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
-import { SectionHeader } from '@/components/ui/SectionHeader'
-import { Card } from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
-import { Store, TrendingUp, Megaphone } from 'lucide-react'
+import { motion, type Variants } from 'framer-motion'
+import { Store, TrendingUp, Megaphone, ArrowRight } from 'lucide-react'
 
 export default function ForBusinessesSection() {
   const models = [
     {
-      icon: <Store size={24} className="text-brand-blue" />,
-      title: 'Venue Partner',
-      description: 'Host a kiosk in your campus, hostel, or office. Zero investment required. We handle everything, and you get a modern amenity for your people.',
+      icon: <Store size={24} />,
+      title: 'Kiosk rental',
+      headline: 'Turn unused space into a premium service',
+      description:
+        'You provide the space. VaultPrint supplies, installs, and maintains the kiosk at zero operational cost to you.',
       link: '/for-venues',
-      action: 'Learn More'
+      action: 'Enquire about rental',
     },
     {
-      icon: <TrendingUp size={24} className="text-brand-blue" />,
-      title: 'Franchisee',
-      description: 'Own and operate VaultPrint kiosks in your city. High ROI, completely automated operations, and comprehensive support from our team.',
+      icon: <TrendingUp size={24} />,
+      title: 'Franchise',
+      headline: 'Run your own VaultPrint business',
+      description:
+        'Own and operate VaultPrint kiosks in your city. Hardware, software, and support provided. Earn from day one.',
       link: '/franchise',
-      action: 'View Franchise Details'
+      action: 'Explore franchise',
     },
     {
-      icon: <Megaphone size={24} className="text-brand-blue" />,
-      title: 'Advertiser',
-      description: 'Reach a highly engaged, captive audience of students and professionals. Run video ads on the 10-inch kiosk screens across our network.',
+      icon: <Megaphone size={24} />,
+      title: 'Brand advertising',
+      headline: 'Reach users at the moment of action',
+      description:
+        'Your brand appears on-screen during idle time and transaction flows — captive, engaged impressions.',
       link: '/advertising',
-      action: 'Explore Advertising'
-    }
+      action: 'Book ad space',
+    },
   ]
 
-  return (
-    <section className="py-24 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader 
-          eyebrow="For businesses"
-          title="Own the kiosk. Or just benefit from one."
-          align="center"
-          className="mb-16"
-        />
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.15 }
+    }
+  }
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {models.map((model, idx) => (
-            <Card key={idx} className="flex flex-col h-full">
-              <div className="w-12 h-12 rounded-xl bg-brand-light flex items-center justify-center mb-6">
-                {model.icon}
-              </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">{model.title}</h3>
-              <p className="text-slate-500 leading-relaxed mb-8 flex-grow">{model.description}</p>
-              <Link href={model.link} className="mt-auto block">
-                <Button variant="secondary" className="w-full">
-                  {model.action}
-                </Button>
-              </Link>
-            </Card>
-          ))}
-        </div>
-      </div>
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  }
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <motion.div 
+        className="flex flex-col items-center text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="pill mb-8 border-vault-deep text-vault-deep">For businesses</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-vault-deep max-w-3xl mb-4">
+          Own the kiosk. Or just benefit from one.
+        </h2>
+      </motion.div>
+
+      <motion.div 
+        className="grid md:grid-cols-3 gap-6 lg:gap-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        {models.map((model, idx) => (
+          <motion.div 
+            key={idx} 
+            variants={itemVariants}
+            className="card p-8 flex flex-col h-full hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group"
+          >
+            <div className="w-14 h-14 rounded-2xl bg-vault-frost text-vault-blue flex items-center justify-center mb-6 group-hover:bg-vault-blue group-hover:text-white transition-colors duration-300">
+              {model.icon}
+            </div>
+            <p className="text-xs font-bold uppercase tracking-wider text-vault-cyan mb-3">
+              {model.title}
+            </p>
+            <h3 className="text-2xl font-display font-bold text-vault-deep mb-4 leading-tight">{model.headline}</h3>
+            <p className="text-vault-deep/70 font-medium leading-relaxed mb-8 grow">{model.description}</p>
+            
+            <Link href={model.link} className="mt-auto block">
+              <button className="w-full flex justify-center items-center gap-2 bg-vault-frost text-vault-deep px-5 py-3 rounded-xl text-sm font-semibold hover:bg-vault-mist transition-colors">
+                {model.action} <ArrowRight size={16} />
+              </button>
+            </Link>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   )
 }

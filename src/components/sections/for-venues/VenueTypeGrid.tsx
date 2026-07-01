@@ -1,6 +1,7 @@
+'use client'
+
 import React from 'react'
-import { SectionHeader } from '@/components/ui/SectionHeader'
-import { Card } from '@/components/ui/Card'
+import { motion, type Variants } from 'framer-motion'
 import { GraduationCap, Landmark, Home, BookOpen, Users, ShoppingBag } from 'lucide-react'
 
 const venues = [
@@ -9,78 +10,94 @@ const venues = [
     venue: 'Engineering & Medical Colleges',
     tagline: 'For students who need to print at midnight',
     description: 'Assignment deadlines, lab files, exam forms — students need printing at all hours.',
-    color: 'text-brand-blue',
-    bgColor: 'bg-blue-50'
   },
   {
     icon: <Landmark size={28} />,
     venue: 'Government Offices',
     tagline: 'For citizens who come in needing a printout',
     description: 'Visitors arrive needing to print forms on the spot. Remove the friction without hiring extra staff.',
-    color: 'text-amber-600',
-    bgColor: 'bg-amber-50'
   },
   {
     icon: <Home size={28} />,
     venue: 'Hostels & PGs',
     tagline: 'For residents with no printer nearby',
     description: 'A shared-living essential. Students print at odd hours without leaving the premises.',
-    color: 'text-indigo-600',
-    bgColor: 'bg-indigo-50'
   },
   {
     icon: <BookOpen size={28} />,
     venue: 'Public Libraries',
     tagline: 'For researchers and readers',
     description: 'A natural fit for a self-service printing terminal.',
-    color: 'text-emerald-600',
-    bgColor: 'bg-emerald-50'
   },
   {
     icon: <Users size={28} />,
     venue: 'Co-working Spaces',
     tagline: 'For teams who print occasionally',
     description: 'Members get occasional printing without the overhead of owning a printer.',
-    color: 'text-violet-600',
-    bgColor: 'bg-violet-50'
   },
   {
     icon: <ShoppingBag size={28} />,
     venue: 'Shopping Malls',
     tagline: 'For shoppers with urgent print needs',
     description: 'High footfall. Travellers, shoppers, and visitors print tickets, forms, and documents on the go.',
-    color: 'text-rose-600',
-    bgColor: 'bg-rose-50'
   }
 ]
 
 export default function VenueTypeGrid() {
-  return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="Venue types"
-          title="Built for venues where people need to print"
-          description="From campuses to co-working spaces — VaultPrint fits any high-footfall location."
-          align="center"
-          className="mb-16"
-        />
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.1 }
+    }
+  }
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {venues.map((v) => (
-            <Card key={v.venue} hoverEffect className="flex flex-col gap-4">
-              <div className={`w-14 h-14 rounded-2xl ${v.bgColor} ${v.color} flex items-center justify-center`}>
-                {v.icon}
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-brand-navy mb-1">{v.venue}</h3>
-                <p className="text-sm font-semibold text-brand-blue mb-2">{v.tagline}</p>
-                <p className="text-sm text-slate-500 leading-relaxed">{v.description}</p>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </div>
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  }
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <motion.div 
+        className="flex flex-col items-center text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="pill mb-8 border-vault-deep text-vault-deep">Venue types</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-vault-deep mb-4">
+          Built for venues where people need to print
+        </h2>
+        <p className="text-vault-deep/70 text-lg max-w-2xl">
+          From campuses to co-working spaces — VaultPrint fits any high-footfall location.
+        </p>
+      </motion.div>
+
+      <motion.div 
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        {venues.map((v) => (
+          <motion.div
+            key={v.venue}
+            variants={itemVariants}
+            className="group card p-8 flex flex-col gap-4 bg-white border border-vault-deep/5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-vault-blue"
+          >
+            <div className="w-16 h-16 rounded-2xl bg-vault-mist text-vault-blue flex items-center justify-center ring-1 ring-vault-blue/10 group-hover:bg-vault-blue group-hover:text-white group-hover:scale-105 transition-all duration-300 mb-2">
+              {v.icon}
+            </div>
+            <div>
+              <h3 className="text-xl font-display font-bold text-vault-deep mb-1 group-hover:text-vault-blue transition-colors">{v.venue}</h3>
+              <p className="text-sm font-bold text-vault-deep/50 uppercase tracking-wider mb-4">{v.tagline}</p>
+              <p className="text-vault-deep/70 font-medium leading-relaxed">{v.description}</p>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   )
 }

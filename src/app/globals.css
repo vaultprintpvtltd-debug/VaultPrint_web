@@ -1,29 +1,108 @@
 @import "tailwindcss";
 
+/*
+  VaultPrint Refactored Design Tokens
+  Colors derived from the provided VaultPrint Branding Kit.
+  Layout and structure from ZenCrypto reference.
+*/
+
+@theme {
+  /* Typography - keeping Space Grotesk and Manrope (sans-serif) */
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* VaultPrint Primary Scale */
+  --color-vault-frost: #EFF6FF;
+  --color-vault-mist: #BAE6FD;
+  --color-vault-sky: #60A5FA;
+  --color-vault-electric: #3B82F6;
+  --color-vault-blue: #2563EB;
+  --color-vault-navy: #1E40AF;
+  --color-vault-deep: #0F172A;
+
+  /* VaultPrint Vibrant Accents */
+  --color-vault-indigo: #4F46E5;
+  --color-vault-cyan: #06B6D4;
+  --color-vault-teal: #0D9488;
+  --color-vault-skybright: #0EA5E9;
+
+  /* Semantic */
+  --color-vault-warning: #F59E0B;
+  --color-vault-error: #EF4444;
+  --color-vault-success: #10B981;
+  
+  /* Aliasing old navy variables so original components don't instantly break while we refactor */
+  --color-navy-50: var(--color-vault-frost);
+  --color-navy-100: var(--color-vault-mist);
+  --color-navy-200: var(--color-vault-sky);
+  --color-navy-500: var(--color-vault-blue);
+  --color-navy-600: var(--color-vault-navy);
+  --color-navy-700: var(--color-vault-navy);
+  --color-navy-800: var(--color-vault-deep);
+  --color-navy-900: var(--color-vault-deep);
+  --color-navy-950: var(--color-vault-deep);
+
+  --color-teal-200: var(--color-vault-cyan);
+  --color-teal-400: var(--color-vault-skybright);
+  --color-teal-500: var(--color-vault-teal);
+  
+  /* Surfaces */
+  --color-background: var(--color-vault-frost);
+  --color-foreground: var(--color-vault-deep);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #EFF6FF;
+  --foreground: #0F172A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-brand-navy: #0F172A;
-  --color-brand-blue: #1D4ED8;
-  --color-brand-light: #EFF6FF;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  ::selection {
+    background-color: var(--color-vault-blue);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-vault-blue);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Utilities for cards and pills */
+@utility card {
+  background-color: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+
+@utility pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid var(--color-vault-deep);
+  padding: 0.25rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--color-vault-deep);
+  font-family: var(--font-sans);
 }

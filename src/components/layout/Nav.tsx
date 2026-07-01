@@ -3,8 +3,8 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Printer } from 'lucide-react'
-import { Button } from '../ui/Button'
+import { Menu, X } from 'lucide-react'
+import { Logo } from '../ui/Logo'
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,29 +22,29 @@ export default function Nav() {
   const isActive = (href: string) => pathname === href
 
   return (
-    <nav className="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all duration-200">
+    <nav className="absolute top-0 z-40 w-full pt-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 sm:h-20 items-center">
+        <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group shrink-0">
-            <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white transition-all group-hover:scale-105 shadow-md shadow-brand-blue/20">
-              <Printer size={20} className="stroke-[2.5]" />
-            </div>
-            <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-brand-navy">
-              Vault<span className="text-brand-blue">Print</span>
-            </span>
+          <Link
+            href="/"
+            className="flex items-center gap-2 group shrink-0 transition-transform hover:-translate-y-0.5"
+            aria-label="VaultPrint home"
+          >
+            <Logo size={32} />
+            <span className="font-display font-bold text-lg text-vault-deep tracking-tight">VaultPrint</span>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-1.5 lg:gap-3">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-colors ${
+                className={`text-sm font-medium transition-colors ${
                   isActive(link.href)
-                    ? 'text-brand-blue bg-brand-light/75 font-semibold'
-                    : 'text-slate-600 hover:text-brand-navy hover:bg-slate-50'
+                    ? 'text-vault-deep font-bold'
+                    : 'text-vault-deep/70 hover:text-vault-deep'
                 }`}
               >
                 {link.name}
@@ -55,9 +55,9 @@ export default function Nav() {
           {/* Desktop CTA */}
           <div className="hidden md:block shrink-0">
             <Link href="/for-venues#enquiry">
-              <Button size="md" variant="primary">
+              <button className="bg-vault-deep text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-vault-navy transition-colors">
                 Partner With Us
-              </Button>
+              </button>
             </Link>
           </div>
 
@@ -65,7 +65,7 @@ export default function Nav() {
           <div className="flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-slate-500 hover:text-brand-navy hover:bg-slate-100 transition-colors"
+              className="p-2 text-vault-deep"
               aria-label="Toggle Navigation Menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -76,27 +76,27 @@ export default function Nav() {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden border-b border-slate-100 bg-white absolute top-16 sm:top-20 left-0 w-full shadow-lg transition-all duration-300">
-          <div className="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+        <div className="md:hidden absolute top-full left-0 w-full bg-vault-frost shadow-lg mt-4 z-50">
+          <div className="px-4 py-6 space-y-4 flex flex-col">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
+                className={`block text-base font-semibold transition-colors ${
                   isActive(link.href)
-                    ? 'text-brand-blue bg-brand-light'
-                    : 'text-slate-700 hover:text-brand-navy hover:bg-slate-50'
+                    ? 'text-vault-deep'
+                    : 'text-vault-deep/80 hover:text-vault-deep'
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            <div className="pt-4 px-4">
+            <div className="pt-4">
               <Link href="/for-venues#enquiry" onClick={() => setIsOpen(false)}>
-                <Button size="md" className="w-full" variant="primary">
+                <button className="w-full bg-vault-deep text-white px-5 py-3 rounded-full text-sm font-semibold hover:bg-vault-navy transition-colors">
                   Partner With Us
-                </Button>
+                </button>
               </Link>
             </div>
           </div>
