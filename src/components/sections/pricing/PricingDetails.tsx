@@ -1,5 +1,7 @@
+'use client'
+
 import React from 'react'
-import { SectionHeader } from '@/components/ui/SectionHeader'
+import { motion, type Variants } from 'framer-motion'
 import { Check, X } from 'lucide-react'
 
 export default function PricingDetails() {
@@ -27,67 +29,116 @@ export default function PricingDetails() {
     ['Total pages', '12 × 2 = 24 pages'],
   ]
 
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.1 }
+    }
+  }
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  }
+
   return (
-    <section className="py-24 bg-cream-50 border-y border-cream-200">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          title="No hidden fees. Ever."
-          description="What you're charged for — and everything you're not."
-          align="center"
-          className="mb-14"
-        />
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <motion.div 
+        className="flex flex-col items-center text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="pill mb-8 border-vault-deep text-vault-deep">No hidden fees</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-vault-deep mb-4">
+          No hidden fees. Ever.
+        </h2>
+        <p className="text-vault-deep/70 text-lg max-w-2xl mx-auto">
+          What you&apos;re charged for - and everything you&apos;re not.
+        </p>
+      </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          {/* Included */}
-          <div className="bg-white rounded-2xl p-8 ring-1 ring-navy-100 shadow-sm">
-            <h3 className="text-lg font-bold text-navy-900 mb-6">What&rsquo;s included</h3>
-            <ul className="space-y-4">
-              {included.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <span className="mt-0.5 shrink-0 w-5 h-5 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center">
-                    <Check size={13} strokeWidth={3} />
-                  </span>
-                  <span className="text-navy-600 font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Not charged */}
-          <div className="bg-white rounded-2xl p-8 ring-1 ring-navy-100 shadow-sm">
-            <h3 className="text-lg font-bold text-navy-900 mb-6">What&rsquo;s not charged</h3>
-            <ul className="space-y-4">
-              {notCharged.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <span className="mt-0.5 shrink-0 w-5 h-5 rounded-full bg-navy-100 text-navy-500 flex items-center justify-center">
-                    <X size={13} strokeWidth={3} />
-                  </span>
-                  <span className="text-navy-600 font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Pricing example — receipt style */}
-        <div className="max-w-md mx-auto bg-linear-to-br from-navy-800 to-navy-950 rounded-2xl p-8 shadow-xl shadow-navy-950/20 ring-1 ring-white/10 text-white">
-          <p className="text-xs font-semibold uppercase tracking-wide text-teal-300 mb-4">
-            Worked example
-          </p>
-          <dl className="space-y-2.5">
-            {example.map(([label, value], idx) => (
-              <div key={idx} className="flex items-center justify-between text-sm">
-                <dt className="text-navy-300">{label}</dt>
-                <dd className="font-medium text-navy-100">{value}</dd>
-              </div>
+      <div className="grid md:grid-cols-2 gap-6 mb-12">
+        {/* Included */}
+        <motion.div 
+          className="card p-8 bg-white border border-vault-deep/5"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <h3 className="text-xl font-display font-bold text-vault-deep mb-6">What&rsquo;s included</h3>
+          <motion.ul 
+            className="space-y-4"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {included.map((item, idx) => (
+              <motion.li key={idx} variants={itemVariants} className="flex items-start gap-3">
+                <span className="mt-0.5 shrink-0 w-6 h-6 rounded-full bg-vault-cyan/20 text-vault-cyan flex items-center justify-center border border-vault-cyan/30">
+                  <Check size={14} strokeWidth={3} />
+                </span>
+                <span className="text-vault-deep/80 font-medium">{item}</span>
+              </motion.li>
             ))}
-          </dl>
-          <div className="mt-5 pt-5 border-t border-white/10 flex items-center justify-between">
-            <span className="text-sm font-semibold text-white">Total amount</span>
-            <span className="font-display text-3xl font-bold text-teal-300">₹48.00</span>
-          </div>
-        </div>
+          </motion.ul>
+        </motion.div>
+
+        {/* Not charged */}
+        <motion.div 
+          className="card p-8 bg-white border border-vault-deep/5"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <h3 className="text-xl font-display font-bold text-vault-deep mb-6">What&rsquo;s not charged</h3>
+          <motion.ul 
+            className="space-y-4"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {notCharged.map((item, idx) => (
+              <motion.li key={idx} variants={itemVariants} className="flex items-start gap-3">
+                <span className="mt-0.5 shrink-0 w-6 h-6 rounded-full bg-vault-deep/5 text-vault-deep/40 flex items-center justify-center border border-vault-deep/10">
+                  <X size={14} strokeWidth={3} />
+                </span>
+                <span className="text-vault-deep/80 font-medium">{item}</span>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </motion.div>
       </div>
+
+      {/* Pricing example — receipt style */}
+      <motion.div 
+        className="max-w-md mx-auto card bg-vault-deep p-8 text-white border-none"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-vault-cyan mb-5">
+          Worked example
+        </p>
+        <dl className="space-y-3">
+          {example.map(([label, value], idx) => (
+            <div key={idx} className="flex items-center justify-between text-sm">
+              <dt className="text-white/60 font-medium">{label}</dt>
+              <dd className="font-bold text-white/90">{value}</dd>
+            </div>
+          ))}
+        </dl>
+        <div className="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+          <span className="text-sm font-bold text-white">Total amount</span>
+          <span className="font-display text-4xl font-bold text-vault-cyan">₹48.00</span>
+        </div>
+      </motion.div>
     </section>
   )
 }

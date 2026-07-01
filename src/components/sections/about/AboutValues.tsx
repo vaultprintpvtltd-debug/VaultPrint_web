@@ -1,5 +1,7 @@
+'use client'
+
 import React from 'react'
-import { SectionHeader } from '@/components/ui/SectionHeader'
+import { motion, type Variants } from 'framer-motion'
 import { ShieldCheck, Zap, Receipt, Clock } from 'lucide-react'
 
 export default function AboutValues() {
@@ -30,31 +32,54 @@ export default function AboutValues() {
     },
   ]
 
-  return (
-    <section className="py-24 bg-cream-50 border-y border-cream-200">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="What we believe"
-          title="Four values, in everything we build"
-          align="center"
-          className="mb-16"
-        />
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.1 }
+    }
+  }
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map((value, idx) => (
-            <div
-              key={idx}
-              className="group bg-white rounded-2xl p-7 ring-1 ring-navy-100 shadow-sm hover:shadow-xl hover:shadow-navy-950/5 hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="w-12 h-12 rounded-xl bg-navy-50 text-navy-700 flex items-center justify-center mb-5 ring-1 ring-navy-100 group-hover:bg-navy-700 group-hover:text-white transition-colors">
-                {value.icon}
-              </div>
-              <h3 className="text-lg font-bold text-navy-900 mb-2">{value.title}</h3>
-              <p className="text-navy-500 leading-relaxed text-sm">{value.statement}</p>
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  }
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <motion.div 
+        className="flex flex-col items-center text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="pill mb-8 border-vault-deep text-vault-deep">What we believe</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-vault-deep mb-6">
+          Four values, in everything we build
+        </h2>
+      </motion.div>
+
+      <motion.div 
+        className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        {values.map((value, idx) => (
+          <motion.div
+            key={idx}
+            variants={itemVariants}
+            className="card p-7 hover:-translate-y-1 hover:shadow-xl hover:border-vault-blue transition-all duration-300 group"
+          >
+            <div className="w-14 h-14 rounded-2xl bg-vault-frost text-vault-blue flex items-center justify-center mb-6 group-hover:bg-vault-blue group-hover:text-white transition-colors duration-300 shadow-sm border border-vault-deep/5">
+              {value.icon}
             </div>
-          ))}
-        </div>
-      </div>
+            <h3 className="text-xl font-display font-bold text-vault-deep mb-3 group-hover:text-vault-blue transition-colors">{value.title}</h3>
+            <p className="text-vault-deep/70 leading-relaxed font-medium">{value.statement}</p>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   )
 }

@@ -1,5 +1,7 @@
+'use client'
+
 import React from 'react'
-import { SectionHeader } from '@/components/ui/SectionHeader'
+import { motion, type Variants } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 
 const responsibilities = [
@@ -26,48 +28,73 @@ const responsibilities = [
 ]
 
 export default function FranchiseResponsibilities() {
-  return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <SectionHeader
-              eyebrow="Your role"
-              title="Your Responsibilities"
-              description="As a local franchise partner, you manage the on-ground operations while we handle the technology."
-              align="left"
-              className="mb-10"
-            />
-            
-            <div className="space-y-6">
-              {responsibilities.map((resp, idx) => (
-                <div key={idx} className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center shrink-0 mt-0.5">
-                    <CheckCircle2 size={18} className="text-teal-500" />
-                  </div>
-                  <div>
-                    <h4 className="text-base font-bold text-navy-900 mb-1">{resp.title}</h4>
-                    <p className="text-navy-500 text-sm sm:text-base leading-relaxed">{resp.detail}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.1 }
+    }
+  }
 
-          <div className="relative">
-            <div className="absolute inset-0 bg-linear-to-tr from-navy-700/10 to-teal-500/10 rounded-3xl transform rotate-3 scale-105" />
-            <div className="bg-linear-to-br from-navy-800 to-navy-950 rounded-3xl p-10 sm:p-12 relative text-white shadow-2xl shadow-navy-950/30 ring-1 ring-white/10">
-              <h3 className="text-2xl font-bold mb-4">You build the business. We build the tech.</h3>
-              <p className="text-navy-200 leading-relaxed mb-8">
-                Operating a VaultPrint kiosk network doesn't require a technical background. If you can change paper in a standard printer and build relationships in your local community, you have everything it takes to succeed.
-              </p>
-              <div className="flex items-center gap-3 text-sm font-semibold text-teal-300 uppercase tracking-wider">
-                <span className="w-8 h-px bg-teal-300/50" />
-                Zero Coding Required
-              </div>
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } }
+  }
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.div variants={itemVariants} className="mb-10">
+            <span className="pill mb-6 border-vault-deep text-vault-deep">Your role</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-vault-deep mb-4">
+              Your Responsibilities
+            </h2>
+            <p className="text-vault-deep/70 text-lg leading-relaxed max-w-md">
+              As a local franchise partner, you manage the on-ground operations while we handle the technology.
+            </p>
+          </motion.div>
+          
+          <div className="space-y-6">
+            {responsibilities.map((resp, idx) => (
+              <motion.div key={idx} variants={itemVariants} className="flex items-start gap-4">
+                <div className="w-8 h-8 rounded-full bg-vault-cyan/20 flex items-center justify-center shrink-0 mt-0.5 border border-vault-cyan/30">
+                  <CheckCircle2 size={18} className="text-vault-cyan" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-display font-bold text-vault-deep mb-1">{resp.title}</h4>
+                  <p className="text-vault-deep/70 font-medium leading-relaxed">{resp.detail}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div 
+          className="relative"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="absolute inset-0 bg-linear-to-tr from-vault-mist to-vault-cyan/20 rounded-3xl transform rotate-3 scale-[1.02] -z-10 blur-sm" />
+          <div className="card bg-vault-deep rounded-3xl p-10 sm:p-12 relative text-white shadow-2xl border-none overflow-hidden">
+            <div className="absolute top-0 right-0 p-32 bg-vault-cyan/20 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
+            
+            <h3 className="text-3xl font-display font-bold mb-6 relative z-10 leading-tight">You build the business. We build the tech.</h3>
+            <p className="text-white/70 leading-relaxed mb-10 relative z-10 text-lg font-medium">
+              Operating a VaultPrint kiosk network doesn&apos;t require a technical background. If you can change paper in a standard printer and build relationships in your local community, you have everything it takes to succeed.
+            </p>
+            <div className="flex items-center gap-4 text-sm font-bold text-vault-cyan uppercase tracking-wider relative z-10">
+              <span className="w-12 h-px bg-vault-cyan/50" />
+              Zero Coding Required
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

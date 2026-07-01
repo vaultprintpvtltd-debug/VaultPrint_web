@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
+import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { ChevronDown, HelpCircle } from 'lucide-react'
-import { SectionHeader } from '@/components/ui/SectionHeader'
 
 const faqs = [
   { 
@@ -42,59 +42,89 @@ const faqs = [
 export default function FaqSection() {
   const [open, setOpen] = useState<number | null>(null)
 
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.1 }
+    }
+  }
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  }
+
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <SectionHeader
-          eyebrow="FAQs"
-          title="Frequently Asked Questions"
-          description="Have questions about security, payments, or formats? We've got you covered."
-          align="center"
-          className="mb-16"
-        />
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <motion.div 
+        className="flex flex-col items-center text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="pill mb-8 border-vault-deep text-vault-deep">FAQs</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-vault-deep mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p className="text-vault-deep/70 text-lg max-w-2xl">
+          Have questions about security, payments, or formats? We&apos;ve got you covered.
+        </p>
+      </motion.div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, i) => {
-            const isOpen = open === i
-            return (
-              <div
-                key={i}
-                className={`border rounded-2xl transition-all duration-300 ${
-                  isOpen
-                    ? 'border-navy-300 bg-white shadow-md shadow-navy-900/5'
-                    : 'border-navy-100 bg-white hover:border-navy-200 hover:shadow-sm'
-                }`}
+      <motion.div 
+        className="space-y-4"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        {faqs.map((faq, i) => {
+          const isOpen = open === i
+          return (
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              className={`card overflow-hidden transition-all duration-300 border ${
+                isOpen
+                  ? 'border-vault-blue bg-white shadow-md'
+                  : 'border-vault-deep/10 bg-white hover:border-vault-deep/30'
+              }`}
+            >
+              <button
+                className="w-full flex justify-between items-center text-left p-6 sm:p-8 font-bold text-vault-deep gap-4 focus:outline-none"
+                onClick={() => setOpen(isOpen ? null : i)}
               >
-                <button
-                  className="w-full flex justify-between items-center text-left p-6 font-semibold text-navy-950 gap-4 focus:outline-none"
-                  onClick={() => setOpen(isOpen ? null : i)}
-                >
-                  <span className="flex items-center gap-3">
-                    <HelpCircle size={18} className={`shrink-0 transition-colors ${isOpen ? 'text-navy-700' : 'text-navy-400'}`} />
-                    <span className="text-base sm:text-lg">{faq.q}</span>
-                  </span>
-                  <ChevronDown
-                    className={`transition-transform duration-300 shrink-0 ${
-                      isOpen ? 'rotate-180 text-navy-700' : 'text-navy-400'
-                    }`}
-                    size={20}
-                  />
-                </button>
-
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    isOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+                <span className="flex items-center gap-4">
+                  <HelpCircle size={20} className={`shrink-0 transition-colors ${isOpen ? 'text-vault-blue' : 'text-vault-deep/40'}`} />
+                  <span className="text-lg">{faq.q}</span>
+                </span>
+                <ChevronDown
+                  className={`transition-transform duration-300 shrink-0 ${
+                    isOpen ? 'rotate-180 text-vault-blue' : 'text-vault-deep/40'
                   }`}
-                >
-                  <div className="px-6 pb-6 pt-0 text-navy-500 font-medium leading-relaxed text-sm sm:text-base border-t border-navy-100">
-                    {faq.a}
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
+                  size={20}
+                />
+              </button>
+
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-0 text-vault-deep/70 font-medium leading-relaxed border-t border-vault-mist/30 mt-2">
+                      <div className="pt-4">{faq.a}</div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          )
+        })}
+      </motion.div>
     </section>
   )
 }

@@ -1,5 +1,7 @@
-import { SectionHeader } from '@/components/ui/SectionHeader'
-import { Card } from '@/components/ui/Card'
+'use client'
+
+import React from 'react'
+import { motion, type Variants } from 'framer-motion'
 import { Clock, ShieldBan, Users, Target, MapPin } from 'lucide-react'
 
 const reasons = [
@@ -31,29 +33,57 @@ const reasons = [
 ]
 
 export default function WhyItWorks() {
-  return (
-    <section className="py-20 lg:py-32 bg-cream-50 border-y border-cream-200">
-      <div className="container mx-auto px-4">
-        <SectionHeader
-          eyebrow="Why It Works"
-          title="Why Kiosk Advertising Works"
-          description="VaultPrint provides an unmatched opportunity to capture attention when it matters most."
-          align="center"
-          className="mb-16"
-        />
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.1 }
+    }
+  }
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
-          {reasons.map((reason, i) => (
-            <Card key={i} hoverEffect className="group">
-              <div className="w-12 h-12 rounded-xl bg-navy-50 text-navy-700 flex items-center justify-center mb-6 ring-1 ring-navy-100 group-hover:bg-navy-700 group-hover:text-white group-hover:scale-105 transition-all duration-300">
-                {reason.icon}
-              </div>
-              <h3 className="text-xl font-bold text-navy-900 mb-3">{reason.title}</h3>
-              <p className="text-navy-500 font-medium leading-relaxed">{reason.description}</p>
-            </Card>
-          ))}
-        </div>
-      </div>
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  }
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <motion.div 
+        className="flex flex-col items-center text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="pill mb-8 border-vault-deep text-vault-deep">Why It Works</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-vault-deep mb-4">
+          Why Kiosk Advertising Works
+        </h2>
+        <p className="text-vault-deep/70 text-lg max-w-2xl">
+          VaultPrint provides an unmatched opportunity to capture attention when it matters most.
+        </p>
+      </motion.div>
+
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        {reasons.map((reason, i) => (
+          <motion.div
+            key={i}
+            variants={itemVariants}
+            className="card p-8 flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-vault-blue border border-vault-deep/5 bg-white"
+          >
+            <div className="w-14 h-14 rounded-2xl bg-vault-frost text-vault-blue flex items-center justify-center mb-6 ring-1 ring-vault-blue/10 group-hover:bg-vault-blue group-hover:text-white transition-colors duration-300">
+              {reason.icon}
+            </div>
+            <h3 className="text-xl font-display font-bold text-vault-deep mb-3 group-hover:text-vault-blue transition-colors">{reason.title}</h3>
+            <p className="text-vault-deep/70 font-medium leading-relaxed">{reason.description}</p>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   )
 }

@@ -1,6 +1,7 @@
+'use client'
+
 import React from 'react'
-import { SectionHeader } from '@/components/ui/SectionHeader'
-import { Card } from '@/components/ui/Card'
+import { motion, type Variants } from 'framer-motion'
 import { Smartphone, Lock, ShieldCheck, Zap, Wallet, KeyRound } from 'lucide-react'
 
 export default function WhyVaultPrintSection() {
@@ -37,28 +38,64 @@ export default function WhyVaultPrintSection() {
     }
   ]
 
-  return (
-    <section className="py-24 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="Why VaultPrint"
-          title="Built differently. Because printing should be private."
-          align="center"
-          className="mb-16"
-        />
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {features.map((feature, idx) => (
-            <Card key={idx} hoverEffect className="group">
-              <div className="w-12 h-12 rounded-xl bg-navy-50 text-navy-700 flex items-center justify-center mb-6 ring-1 ring-navy-100 group-hover:bg-navy-700 group-hover:text-white group-hover:scale-105 transition-all duration-300">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-bold text-navy-900 mb-3">{feature.title}</h3>
-              <p className="text-navy-500 font-medium leading-relaxed">{feature.description}</p>
-            </Card>
-          ))}
-        </div>
-      </div>
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  }
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <motion.div 
+        className="flex flex-col items-center text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="pill mb-8 border-vault-deep text-vault-deep">Why VaultPrint</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-vault-deep max-w-3xl mb-6">
+          Built differently. Because printing should be private.
+        </h2>
+      </motion.div>
+
+      <motion.div 
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        {features.map((feature, idx) => (
+          <motion.div 
+            key={idx} 
+            variants={itemVariants}
+            className={`card p-8 flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
+              idx === 1 ? 'bg-vault-blue text-white' : 'bg-white text-vault-deep'
+            }`}
+          >
+            <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300 ${
+              idx === 1 
+                ? 'bg-white/20 text-white' 
+                : 'bg-vault-frost text-vault-blue group-hover:bg-vault-blue group-hover:text-white'
+            }`}>
+              {feature.icon}
+            </div>
+            <h3 className="text-xl font-display font-bold mb-3">{feature.title}</h3>
+            <p className={`font-medium leading-relaxed ${idx === 1 ? 'text-white/80' : 'text-vault-deep/70'}`}>
+              {feature.description}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   )
 }
