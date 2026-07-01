@@ -44,17 +44,17 @@ export default function HowItWorksSection() {
             <div key={idx} className="relative flex flex-col group">
               {/* Connector line for desktop */}
               {idx < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-1/2 w-full h-0.5 bg-slate-100" />
+                <div className="hidden lg:block absolute top-8 left-16 w-full h-0.5 bg-linear-to-r from-navy-200 to-transparent" />
               )}
-              
-              <div className="w-16 h-16 bg-brand-light text-brand-blue rounded-2xl flex items-center justify-center mb-6 relative z-10 shadow-sm border border-blue-100 group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
+
+              <div className="w-16 h-16 bg-navy-50 text-navy-700 rounded-2xl flex items-center justify-center mb-6 relative z-10 shadow-sm ring-1 ring-navy-100 group-hover:bg-navy-700 group-hover:text-white group-hover:-translate-y-1 transition-all duration-300">
                 {step.icon}
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-brand-navy text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-teal-400 text-navy-950 text-xs font-bold rounded-full flex items-center justify-center ring-2 ring-white">
                   {idx + 1}
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">{step.title}</h3>
-              <p className="text-slate-500 font-medium leading-relaxed">{step.description}</p>
+              <h3 className="text-xl font-bold text-navy-900 mb-3">{step.title}</h3>
+              <p className="text-navy-500 font-medium leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>

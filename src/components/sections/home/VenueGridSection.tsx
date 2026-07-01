@@ -4,31 +4,34 @@ import { GraduationCap, Building2, Coffee, Plane, Briefcase, ShoppingBag } from 
 
 export default function VenueGridSection() {
   const venues = [
-    { name: 'University Campuses', icon: <GraduationCap size={28} /> },
-    { name: 'Student Hostels', icon: <Building2 size={28} /> },
-    { name: 'Coworking Spaces', icon: <Coffee size={28} /> },
-    { name: 'Airports & Transit', icon: <Plane size={28} /> },
-    { name: 'Corporate Offices', icon: <Briefcase size={28} /> },
-    { name: 'Retail Malls', icon: <ShoppingBag size={28} /> },
+    { name: 'University campuses', icon: <GraduationCap size={26} /> },
+    { name: 'Student hostels & PGs', icon: <Building2 size={26} /> },
+    { name: 'Coworking spaces', icon: <Coffee size={26} /> },
+    { name: 'Railway & bus stands', icon: <Plane size={26} /> },
+    { name: 'Government offices', icon: <Briefcase size={26} /> },
+    { name: 'Shopping malls', icon: <ShoppingBag size={26} /> },
   ]
 
   return (
-    <section className="py-24 bg-slate-50 border-t border-slate-100">
+    <section className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader 
+        <SectionHeader
           title="Where VaultPrint belongs"
-          description="Designed to fit seamlessly into any high-traffic environment."
+          description="Built for high-footfall locations where people need to print on the go."
           align="center"
           className="mb-16"
         />
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {venues.map((venue, idx) => (
-            <div key={idx} className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 text-center hover:border-brand-blue hover:shadow-lg transition-all duration-300 group">
-              <div className="w-14 h-14 mx-auto bg-slate-50 text-slate-400 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand-light group-hover:text-brand-blue transition-colors duration-300">
+            <div
+              key={idx}
+              className="bg-white border border-navy-100 rounded-2xl p-6 sm:p-8 text-center hover:border-navy-300 hover:shadow-xl hover:shadow-navy-950/5 hover:-translate-y-1 transition-all duration-300 group"
+            >
+              <div className="w-14 h-14 mx-auto bg-navy-50 text-navy-500 rounded-xl flex items-center justify-center mb-4 ring-1 ring-navy-100 group-hover:bg-navy-700 group-hover:text-white transition-colors duration-300">
                 {venue.icon}
               </div>
-              <h3 className="font-bold text-slate-800">{venue.name}</h3>
+              <h3 className="font-bold text-navy-900">{venue.name}</h3>
             </div>
           ))}
         </div>

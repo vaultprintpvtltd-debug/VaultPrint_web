@@ -27,9 +27,9 @@ export default function ProblemSection() {
   ]
 
   return (
-    <section className="py-20 bg-slate-50 border-y border-slate-100">
+    <section className="py-20 bg-cream-50 border-y border-cream-200">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader 
+        <SectionHeader
           eyebrow="The old way of printing"
           title="You shouldn't have to hand your documents to a stranger."
           align="center"
@@ -38,37 +38,37 @@ export default function ProblemSection() {
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {/* Old Way Column */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
-            <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2 pb-4 border-b border-slate-100">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-navy-100 shadow-sm">
+            <h3 className="text-lg font-bold text-navy-900 mb-6 flex items-center gap-2.5 pb-4 border-b border-navy-100">
               <span className="bg-red-100 text-red-600 p-1.5 rounded-lg">
                 <XCircle size={20} />
               </span>
               The Old Way
             </h3>
-            <ul className="space-y-6">
+            <ul className="space-y-5">
               {comparisons.map((item, idx) => (
                 <li key={idx} className="flex gap-3 items-start">
                   <XCircle size={20} className="text-red-400 shrink-0 mt-0.5" />
-                  <span className="text-slate-600 font-medium leading-relaxed">{item.old}</span>
+                  <span className="text-navy-600 font-medium leading-relaxed">{item.old}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* VaultPrint Way Column */}
-          <div className="bg-brand-navy rounded-2xl p-6 sm:p-8 shadow-xl shadow-brand-navy/10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-32 bg-brand-blue/20 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
-            <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2 pb-4 border-b border-white/10 relative z-10">
-              <span className="bg-brand-blue/20 text-brand-light p-1.5 rounded-lg">
+          <div className="bg-linear-to-br from-navy-800 to-navy-950 rounded-2xl p-6 sm:p-8 shadow-xl shadow-navy-950/20 relative overflow-hidden ring-1 ring-white/10">
+            <div className="absolute top-0 right-0 p-32 bg-teal-400/20 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
+            <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2.5 pb-4 border-b border-white/10 relative z-10">
+              <span className="bg-teal-400/20 text-teal-300 p-1.5 rounded-lg">
                 <CheckCircle2 size={20} />
               </span>
               The VaultPrint Way
             </h3>
-            <ul className="space-y-6 relative z-10">
+            <ul className="space-y-5 relative z-10">
               {comparisons.map((item, idx) => (
                 <li key={idx} className="flex gap-3 items-start">
-                  <CheckCircle2 size={20} className="text-brand-light shrink-0 mt-0.5" />
-                  <span className="text-slate-200 font-medium leading-relaxed">{item.new}</span>
+                  <CheckCircle2 size={20} className="text-teal-300 shrink-0 mt-0.5" />
+                  <span className="text-navy-100 font-medium leading-relaxed">{item.new}</span>
                 </li>
               ))}
             </ul>
