@@ -42,27 +42,27 @@ export default function FranchiseResponsibilities() {
             <div className="space-y-6">
               {responsibilities.map((resp, idx) => (
                 <div key={idx} className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
-                    <CheckCircle2 size={18} className="text-brand-blue" />
+                  <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle2 size={18} className="text-teal-500" />
                   </div>
                   <div>
-                    <h4 className="text-base font-bold text-brand-navy mb-1">{resp.title}</h4>
-                    <p className="text-slate-500 text-sm sm:text-base leading-relaxed">{resp.detail}</p>
+                    <h4 className="text-base font-bold text-navy-900 mb-1">{resp.title}</h4>
+                    <p className="text-navy-500 text-sm sm:text-base leading-relaxed">{resp.detail}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          
+
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/10 to-indigo-500/10 rounded-3xl transform rotate-3 scale-105" />
-            <div className="bg-brand-navy rounded-3xl p-10 sm:p-12 relative text-white shadow-2xl">
+            <div className="absolute inset-0 bg-linear-to-tr from-navy-700/10 to-teal-500/10 rounded-3xl transform rotate-3 scale-105" />
+            <div className="bg-linear-to-br from-navy-800 to-navy-950 rounded-3xl p-10 sm:p-12 relative text-white shadow-2xl shadow-navy-950/30 ring-1 ring-white/10">
               <h3 className="text-2xl font-bold mb-4">You build the business. We build the tech.</h3>
-              <p className="text-slate-300 leading-relaxed mb-8">
+              <p className="text-navy-200 leading-relaxed mb-8">
                 Operating a VaultPrint kiosk network doesn't require a technical background. If you can change paper in a standard printer and build relationships in your local community, you have everything it takes to succeed.
               </p>
-              <div className="flex items-center gap-3 text-sm font-semibold text-blue-300 uppercase tracking-wider">
-                <span className="w-8 h-px bg-blue-300/50" />
+              <div className="flex items-center gap-3 text-sm font-semibold text-teal-300 uppercase tracking-wider">
+                <span className="w-8 h-px bg-teal-300/50" />
                 Zero Coding Required
               </div>
             </div>

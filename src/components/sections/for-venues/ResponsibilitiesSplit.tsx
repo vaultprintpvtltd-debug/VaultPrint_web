@@ -33,45 +33,46 @@ export default function ResponsibilitiesSplit() {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* VaultPrint Column */}
-          <div className="bg-gradient-to-br from-brand-navy to-slate-800 rounded-3xl p-8 sm:p-10 text-white">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                <CheckCircle2 size={20} className="text-blue-400" />
+          <div className="bg-linear-to-br from-navy-800 to-navy-950 rounded-3xl p-8 sm:p-10 text-white shadow-xl shadow-navy-950/20 relative overflow-hidden ring-1 ring-white/10">
+            <div className="absolute top-0 right-0 p-32 bg-teal-400/20 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
+            <div className="flex items-center gap-3 mb-8 relative z-10">
+              <div className="w-10 h-10 rounded-xl bg-teal-400/20 flex items-center justify-center">
+                <CheckCircle2 size={20} className="text-teal-300" />
               </div>
               <h3 className="text-xl font-bold">VaultPrint handles</h3>
             </div>
 
-            <ul className="space-y-4">
+            <ul className="space-y-4 relative z-10">
               {vaultprintHandles.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <ArrowRight size={16} className="text-blue-400 mt-1 shrink-0" />
-                  <span className="text-white/80 font-medium text-sm sm:text-base">{item}</span>
+                  <ArrowRight size={16} className="text-teal-300 mt-1 shrink-0" />
+                  <span className="text-navy-100 font-medium text-sm sm:text-base">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* You Provide Column */}
-          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-10">
+          <div className="bg-cream-50 border border-cream-200 rounded-3xl p-8 sm:p-10">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center">
-                <CheckCircle2 size={20} className="text-brand-blue" />
+              <div className="w-10 h-10 rounded-xl bg-navy-50 ring-1 ring-navy-100 flex items-center justify-center">
+                <CheckCircle2 size={20} className="text-teal-500" />
               </div>
-              <h3 className="text-xl font-bold text-brand-navy">You provide</h3>
+              <h3 className="text-xl font-bold text-navy-900">You provide</h3>
             </div>
 
             <ul className="space-y-4">
               {youProvide.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <ArrowRight size={16} className="text-brand-blue mt-1 shrink-0" />
-                  <span className="text-slate-600 font-medium text-sm sm:text-base">{item}</span>
+                  <ArrowRight size={16} className="text-navy-700 mt-1 shrink-0" />
+                  <span className="text-navy-700 font-medium text-sm sm:text-base">{item}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-8 pt-6 border-t border-slate-200">
-              <p className="text-brand-navy font-bold text-lg">That&apos;s it.</p>
-              <p className="text-slate-500 text-sm mt-1">No recurring fees. No hidden costs. No operational burden.</p>
+            <div className="mt-8 pt-6 border-t border-cream-200">
+              <p className="text-navy-900 font-bold text-lg">That&apos;s it.</p>
+              <p className="text-navy-500 text-sm mt-1">No recurring fees. No hidden costs. No operational burden.</p>
             </div>
           </div>
         </div>

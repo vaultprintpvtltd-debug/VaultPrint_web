@@ -9,48 +9,36 @@ const venues = [
     venue: 'Engineering & Medical Colleges',
     tagline: 'For students who need to print at midnight',
     description: 'Assignment deadlines, lab files, exam forms — students need printing at all hours.',
-    color: 'text-brand-blue',
-    bgColor: 'bg-blue-50'
   },
   {
     icon: <Landmark size={28} />,
     venue: 'Government Offices',
     tagline: 'For citizens who come in needing a printout',
     description: 'Visitors arrive needing to print forms on the spot. Remove the friction without hiring extra staff.',
-    color: 'text-amber-600',
-    bgColor: 'bg-amber-50'
   },
   {
     icon: <Home size={28} />,
     venue: 'Hostels & PGs',
     tagline: 'For residents with no printer nearby',
     description: 'A shared-living essential. Students print at odd hours without leaving the premises.',
-    color: 'text-indigo-600',
-    bgColor: 'bg-indigo-50'
   },
   {
     icon: <BookOpen size={28} />,
     venue: 'Public Libraries',
     tagline: 'For researchers and readers',
     description: 'A natural fit for a self-service printing terminal.',
-    color: 'text-emerald-600',
-    bgColor: 'bg-emerald-50'
   },
   {
     icon: <Users size={28} />,
     venue: 'Co-working Spaces',
     tagline: 'For teams who print occasionally',
     description: 'Members get occasional printing without the overhead of owning a printer.',
-    color: 'text-violet-600',
-    bgColor: 'bg-violet-50'
   },
   {
     icon: <ShoppingBag size={28} />,
     venue: 'Shopping Malls',
     tagline: 'For shoppers with urgent print needs',
     description: 'High footfall. Travellers, shoppers, and visitors print tickets, forms, and documents on the go.',
-    color: 'text-rose-600',
-    bgColor: 'bg-rose-50'
   }
 ]
 
@@ -68,14 +56,14 @@ export default function VenueTypeGrid() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {venues.map((v) => (
-            <Card key={v.venue} hoverEffect className="flex flex-col gap-4">
-              <div className={`w-14 h-14 rounded-2xl ${v.bgColor} ${v.color} flex items-center justify-center`}>
+            <Card key={v.venue} hoverEffect className="group flex flex-col gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-navy-50 text-navy-700 flex items-center justify-center ring-1 ring-navy-100 group-hover:bg-navy-700 group-hover:text-white group-hover:scale-105 transition-all duration-300">
                 {v.icon}
               </div>
               <div>
-                <h3 className="text-lg font-bold text-brand-navy mb-1">{v.venue}</h3>
-                <p className="text-sm font-semibold text-brand-blue mb-2">{v.tagline}</p>
-                <p className="text-sm text-slate-500 leading-relaxed">{v.description}</p>
+                <h3 className="text-lg font-bold text-navy-900 mb-1">{v.venue}</h3>
+                <p className="text-sm font-semibold text-navy-700 mb-2">{v.tagline}</p>
+                <p className="text-sm text-navy-500 leading-relaxed">{v.description}</p>
               </div>
             </Card>
           ))}

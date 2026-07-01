@@ -19,28 +19,29 @@ export default function ForVenuesPage() {
   return (
     <>
       {/* Page Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-slate-900 to-slate-950 py-24 sm:py-32 text-white">
-        {/* Background accents */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-blue/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative overflow-hidden bg-white pt-14 pb-20 lg:pt-20 lg:pb-28">
+        {/* Decorative background */}
+        <div className="absolute inset-0 bg-grid mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_60%,transparent_100%)]" />
+        <div className="absolute -top-32 right-0 h-128 w-lg rounded-full bg-teal-200/40 blur-3xl pointer-events-none" />
+        <div className="absolute top-24 -left-24 h-96 w-96 rounded-full bg-navy-100/60 blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Text Side */}
             <div className="flex flex-col gap-6">
-              <Badge variant="accent" className="w-fit bg-white/10 border-white/20 text-blue-300">
+              <Badge variant="primary" className="w-fit">
                 For colleges, offices, hostels & co-working spaces
               </Badge>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-balance text-navy-950">
                 Turn unused space into a{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
+                <span className="text-navy-700">
                   premium service
                 </span>{' '}
                 for your visitors.
               </h1>
 
-              <p className="text-lg sm:text-xl text-slate-300 font-medium leading-relaxed max-w-xl">
+              <p className="text-lg sm:text-xl text-navy-500 font-medium leading-relaxed max-w-xl text-pretty">
                 VaultPrint supplies, installs, and maintains a fully automated printing kiosk at your venue — at zero operational cost to you.
               </p>
 
@@ -50,17 +51,17 @@ export default function ForVenuesPage() {
                     variant="primary"
                     size="lg"
                     rightIcon={<ArrowRight size={18} />}
-                    className="w-full sm:w-auto bg-white text-brand-navy hover:bg-slate-100"
+                    className="w-full sm:w-auto"
                   >
                     Get a Free Consultation
                   </Button>
                 </Link>
                 <Link href="#how-rental-works">
                   <Button
-                    variant="ghost"
+                    variant="secondary"
                     size="lg"
                     rightIcon={<ArrowDown size={18} />}
-                    className="w-full sm:w-auto text-slate-300 hover:text-white hover:bg-white/10"
+                    className="w-full sm:w-auto"
                   >
                     See how it works first
                   </Button>
@@ -70,8 +71,8 @@ export default function ForVenuesPage() {
 
             {/* Visual Side */}
             <div className="relative hidden lg:block">
-              <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-blue-500/20 to-indigo-500/10 blur-xl" />
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+              <div className="absolute -inset-6 rounded-3xl bg-linear-to-br from-teal-200/40 to-navy-100/40 blur-xl" />
+              <div className="relative overflow-hidden rounded-3xl border border-navy-100 shadow-2xl shadow-navy-950/10 ring-1 ring-navy-100">
                 <Image
                   src="/images/kiosk-hero.png"
                   alt="VaultPrint kiosk in a venue"

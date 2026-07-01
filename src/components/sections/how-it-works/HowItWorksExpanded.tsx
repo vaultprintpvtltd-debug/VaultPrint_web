@@ -20,8 +20,8 @@ const steps: Step[] = [
     body: 'Every VaultPrint kiosk displays a unique QR code. Open your phone camera and point it at the code. No scanning app needed. No login. No account. No personal information required. The QR is tied to the specific kiosk you\'re standing at.',
     image: '/images/step-1-scan.png',
     icon: <QrCode size={28} />,
-    color: 'text-brand-blue border-brand-blue/20',
-    bgColor: 'bg-blue-50/50'
+    color: 'text-navy-700 border-navy-200',
+    bgColor: 'bg-navy-50'
   },
   {
     number: 2,
@@ -29,8 +29,8 @@ const steps: Step[] = [
     body: 'Select your PDF from phone storage, Google Drive, Dropbox, or any connected app. Your file is uploaded using an encrypted connection directly to a private server — never stored on a shared device or seen by any person. Page count is extracted automatically.',
     image: '/images/step-2-upload.png',
     icon: <UploadCloud size={28} />,
-    color: 'text-indigo-600 border-indigo-200',
-    bgColor: 'bg-indigo-50/50'
+    color: 'text-navy-700 border-navy-200',
+    bgColor: 'bg-navy-50'
   },
   {
     number: 3,
@@ -38,8 +38,8 @@ const steps: Step[] = [
     body: 'Set your preferences: page range, B&W or colour, number of copies, single or double sided, and orientation. Price updates live as you change settings. Pay via UPI, card, or digital wallet through Razorpay. Payment is verified server-side before anything is printed.',
     image: '/images/step-3-pay.png',
     icon: <CreditCard size={28} />,
-    color: 'text-emerald-600 border-emerald-200',
-    bgColor: 'bg-emerald-50/50'
+    color: 'text-navy-700 border-navy-200',
+    bgColor: 'bg-navy-50'
   },
   {
     number: 4,
@@ -47,14 +47,14 @@ const steps: Step[] = [
     body: 'After payment, a 6-digit one-time code appears on your phone. Walk to the kiosk and enter the code on the numpad. The kiosk verifies it, sends your document to the printer, and pages are ready within seconds. Your file is permanently deleted immediately after printing.',
     image: '/images/step-4-collect.png',
     icon: <Unlock size={28} />,
-    color: 'text-amber-600 border-amber-200',
-    bgColor: 'bg-amber-50/50'
+    color: 'text-navy-700 border-navy-200',
+    bgColor: 'bg-navy-50'
   }
 ]
 
 export default function HowItWorksExpanded() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-cream-50 border-y border-cream-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           eyebrow="Step-by-step"
@@ -76,20 +76,20 @@ export default function HowItWorksExpanded() {
                 <div className={`lg:col-span-5 flex flex-col justify-center ${isEven ? 'lg:order-last' : ''}`}>
                   {/* Step counter badge */}
                   <div className="inline-flex items-center gap-3 mb-6">
-                    <span className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-lg border ${step.color} ${step.bgColor}`}>
+                    <span className={`w-10 h-10 rounded-xl flex items-center justify-center font-display font-bold text-lg border ring-1 ring-navy-100 ${step.color} ${step.bgColor}`}>
                       {step.number}
                     </span>
-                    <span className="text-sm font-semibold tracking-wider text-slate-400 uppercase">
+                    <span className="text-sm font-semibold tracking-wider text-navy-400 uppercase">
                       Step {step.number}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-bold text-brand-navy mb-6 tracking-tight flex items-start gap-3.5">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-navy-950 mb-6 tracking-tight flex items-start gap-3.5">
                     <span className={`${step.color} mt-1`}>{step.icon}</span>
                     <span>{step.headline}</span>
                   </h3>
-                  
-                  <p className="text-slate-500 font-medium leading-relaxed text-base sm:text-lg">
+
+                  <p className="text-navy-500 font-medium leading-relaxed text-base sm:text-lg">
                     {step.body}
                   </p>
                 </div>
@@ -97,9 +97,9 @@ export default function HowItWorksExpanded() {
                 {/* Visual Side */}
                 <div className="lg:col-span-7 relative">
                   {/* Decorative Background Blob */}
-                  <div className={`absolute -inset-4 rounded-3xl ${step.bgColor} blur-xl opacity-70 -z-10`} />
-                  
-                  <div className="overflow-hidden rounded-3xl border border-slate-100 bg-slate-50 shadow-lg group">
+                  <div className="absolute -inset-4 rounded-3xl bg-teal-200/40 blur-xl opacity-70 -z-10" />
+
+                  <div className="overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-lg group">
                     <Image
                       src={step.image}
                       alt={step.headline}

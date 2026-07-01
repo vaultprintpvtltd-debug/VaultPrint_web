@@ -48,19 +48,19 @@ export default function VenueEnquiryForm() {
     return (
       <section id="enquiry" className="py-24 bg-white scroll-mt-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <div className="bg-emerald-50 border border-emerald-200 rounded-3xl p-10 sm:p-14 text-center">
-            <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle2 size={32} className="text-emerald-600" />
+          <div className="bg-teal-50 border border-teal-200 rounded-3xl p-10 sm:p-14 text-center">
+            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CheckCircle2 size={32} className="text-teal-600" />
             </div>
-            <h3 className="text-2xl font-bold text-emerald-800 mb-3">
+            <h3 className="text-2xl font-bold text-navy-900 mb-3">
               Thank you for reaching out!
             </h3>
-            <p className="text-emerald-700 font-medium leading-relaxed max-w-md mx-auto">
+            <p className="text-navy-700 font-medium leading-relaxed max-w-md mx-auto">
               We&apos;ve received your enquiry and will respond within 24 hours with a personalised proposal for your venue.
             </p>
-            <p className="text-emerald-600/70 text-sm mt-4">
+            <p className="text-navy-500 text-sm mt-4">
               For urgent enquiries, WhatsApp us at{' '}
-              <a href="https://wa.me/919999999999" className="underline font-semibold hover:text-emerald-800 transition-colors">
+              <a href="https://wa.me/919999999999" className="underline font-semibold text-teal-600 hover:text-teal-700 transition-colors">
                 +91 99999 99999
               </a>
             </p>
@@ -85,24 +85,24 @@ export default function VenueEnquiryForm() {
             />
 
             <div className="hidden lg:block space-y-6 mt-4">
-              <div className="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center shrink-0">
-                  <MessageCircle size={18} className="text-brand-blue" />
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-cream-50 border border-cream-200">
+                <div className="w-10 h-10 rounded-xl bg-navy-50 ring-1 ring-navy-100 flex items-center justify-center shrink-0">
+                  <MessageCircle size={18} className="text-navy-700" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-brand-navy mb-1">Prefer WhatsApp?</h4>
-                  <p className="text-sm text-slate-500">
+                  <h4 className="text-sm font-bold text-navy-900 mb-1">Prefer WhatsApp?</h4>
+                  <p className="text-sm text-navy-500">
                     Message us at{' '}
-                    <a href="https://wa.me/919999999999" className="text-brand-blue font-semibold hover:underline">
+                    <a href="https://wa.me/919999999999" className="text-navy-700 font-semibold hover:underline">
                       +91 99999 99999
                     </a>
                   </p>
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100">
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  <span className="font-semibold text-brand-navy">What happens next?</span>
+              <div className="p-5 rounded-2xl bg-cream-50 border border-cream-200">
+                <p className="text-sm text-navy-500 leading-relaxed">
+                  <span className="font-semibold text-navy-900">What happens next?</span>
                   <br />
                   We&apos;ll review your venue details, assess feasibility based on footfall and infrastructure, and send you a tailored proposal — typically within 48 hours.
                 </p>
@@ -112,7 +112,7 @@ export default function VenueEnquiryForm() {
 
           {/* Right column — form */}
           <div className="lg:col-span-7">
-            <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-lg shadow-slate-200/40">
+            <div className="bg-white ring-1 ring-navy-100 rounded-3xl p-8 sm:p-10 shadow-lg shadow-navy-950/5">
               {state?.error && (
                 <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
                   {state.error}
@@ -204,7 +204,7 @@ export default function VenueEnquiryForm() {
 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
                   <SubmitButton />
-                  <p className="text-xs text-slate-400 font-medium">
+                  <p className="text-xs text-navy-400 font-medium">
                     We typically respond within 24 hours.
                   </p>
                 </div>

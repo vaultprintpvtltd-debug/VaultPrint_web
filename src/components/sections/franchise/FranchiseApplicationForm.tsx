@@ -45,14 +45,14 @@ export default function FranchiseApplicationForm() {
     return (
       <section id="application" className="py-24 bg-white scroll-mt-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <div className="bg-brand-light border border-blue-200 rounded-3xl p-10 sm:p-14 text-center shadow-lg shadow-blue-100/50">
-            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-              <CheckCircle2 size={40} className="text-brand-blue" />
+          <div className="bg-navy-50 border border-navy-100 rounded-3xl p-10 sm:p-14 text-center shadow-lg shadow-navy-950/5">
+            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm ring-1 ring-navy-100">
+              <CheckCircle2 size={40} className="text-teal-500" />
             </div>
-            <h3 className="text-3xl font-extrabold text-brand-navy mb-4 tracking-tight">
+            <h3 className="text-3xl font-bold text-navy-950 mb-4 tracking-tight">
               Application Received!
             </h3>
-            <p className="text-slate-600 font-medium leading-relaxed max-w-lg mx-auto text-lg">
+            <p className="text-navy-700 font-medium leading-relaxed max-w-lg mx-auto text-lg">
               Thank you for your interest in becoming a VaultPrint franchise partner. Our team is reviewing your application and will contact you within 48 hours to schedule a consultation call.
             </p>
           </div>
@@ -72,7 +72,7 @@ export default function FranchiseApplicationForm() {
           className="mb-16"
         />
 
-        <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xl shadow-slate-200/50">
+        <div className="bg-white rounded-2xl ring-1 ring-navy-100 p-8 sm:p-12 shadow shadow-navy-950/5">
           {state?.error && (
             <div className="mb-8 p-5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-semibold flex items-center gap-3">
               <span className="text-xl">⚠️</span> {state.error}
@@ -159,7 +159,7 @@ export default function FranchiseApplicationForm() {
             <div className="pt-4 flex justify-center">
               <SubmitButton />
             </div>
-            <p className="text-center text-xs font-medium text-slate-400 mt-4">
+            <p className="text-center text-xs font-medium text-navy-400 mt-4">
               Your data is secure. We never share your information with third parties.
             </p>
           </form>

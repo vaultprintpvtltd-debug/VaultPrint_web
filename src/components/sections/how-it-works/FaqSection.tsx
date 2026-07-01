@@ -43,7 +43,7 @@ export default function FaqSection() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="py-24 bg-slate-50 border-t border-slate-100">
+    <section className="py-24 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <SectionHeader
           eyebrow="FAQs"
@@ -60,33 +60,33 @@ export default function FaqSection() {
               <div
                 key={i}
                 className={`border rounded-2xl transition-all duration-300 ${
-                  isOpen 
-                    ? 'border-brand-blue/30 bg-white shadow-md shadow-brand-blue/5' 
-                    : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm'
+                  isOpen
+                    ? 'border-navy-300 bg-white shadow-md shadow-navy-900/5'
+                    : 'border-navy-100 bg-white hover:border-navy-200 hover:shadow-sm'
                 }`}
               >
                 <button
-                  className="w-full flex justify-between items-center text-left p-6 font-semibold text-brand-navy gap-4 focus:outline-none"
+                  className="w-full flex justify-between items-center text-left p-6 font-semibold text-navy-950 gap-4 focus:outline-none"
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
                   <span className="flex items-center gap-3">
-                    <HelpCircle size={18} className={`shrink-0 transition-colors ${isOpen ? 'text-brand-blue' : 'text-slate-400'}`} />
+                    <HelpCircle size={18} className={`shrink-0 transition-colors ${isOpen ? 'text-navy-700' : 'text-navy-400'}`} />
                     <span className="text-base sm:text-lg">{faq.q}</span>
                   </span>
                   <ChevronDown
                     className={`transition-transform duration-300 shrink-0 ${
-                      isOpen ? 'rotate-180 text-brand-blue' : 'text-slate-400'
+                      isOpen ? 'rotate-180 text-navy-700' : 'text-navy-400'
                     }`}
                     size={20}
                   />
                 </button>
-                
+
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
                     isOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <div className="px-6 pb-6 pt-0 text-slate-500 font-medium leading-relaxed text-sm sm:text-base border-t border-slate-50/50">
+                  <div className="px-6 pb-6 pt-0 text-navy-500 font-medium leading-relaxed text-sm sm:text-base border-t border-navy-100">
                     {faq.a}
                   </div>
                 </div>

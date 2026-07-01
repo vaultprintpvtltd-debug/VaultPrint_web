@@ -3,22 +3,25 @@
 import { useActionState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { FormField } from '@/components/ui/FormField'
+import { Button } from '@/components/ui/Button'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 import { submitAdvertisingEnquiry } from '@/actions/submitAdvertisingEnquiry'
 import { CheckCircle2, ArrowRight } from 'lucide-react'
 
 function SubmitButton() {
   const { pending } = useFormStatus()
-  
+
   return (
-    <button
+    <Button
       type="submit"
-      disabled={pending}
-      className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-brand-blue rounded-full hover:bg-blue-700 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
+      variant="primary"
+      size="lg"
+      isLoading={pending}
+      className="w-full sm:w-auto"
+      rightIcon={pending ? undefined : <ArrowRight size={18} />}
     >
-      {pending ? 'Submitting...' : (
-        <>Submit Advertising Enquiry <ArrowRight className="ml-2 w-5 h-5" /></>
-      )}
-    </button>
+      {pending ? 'Submitting...' : 'Submit Advertising Enquiry'}
+    </Button>
   )
 }
 
@@ -27,34 +30,37 @@ export default function CampaignEnquiryForm() {
 
   if (state?.success) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center animate-fade-in-up">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <CheckCircle2 className="w-8 h-8 text-green-600" />
+      <section id="enquiry" className="py-20 lg:py-32 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto rounded-2xl ring-1 ring-teal-200 bg-teal-50 p-8 md:p-12 text-center animate-fade-in-up">
+            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 ring-1 ring-teal-200">
+              <CheckCircle2 className="w-8 h-8 text-teal-600" />
+            </div>
+            <h3 className="text-2xl font-bold text-navy-900 mb-2">Request Received!</h3>
+            <p className="text-navy-700 max-w-md mx-auto leading-relaxed">
+              Thank you for your interest in advertising with VaultPrint. Our partnerships team will review your requirements and contact you within 24 hours.
+            </p>
+          </div>
         </div>
-        <h3 className="text-2xl font-bold text-green-900 mb-2">Request Received!</h3>
-        <p className="text-green-800 max-w-md mx-auto">
-          Thank you for your interest in advertising with VaultPrint. Our partnerships team will review your requirements and contact you within 24 hours.
-        </p>
-      </div>
+      </section>
     )
   }
 
   return (
     <section id="enquiry" className="py-20 lg:py-32 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
-            Start Your Campaign
-          </h2>
-          <p className="text-lg text-gray-600">
-            Fill out the form below to connect with our advertising team.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Get Started"
+          title="Start Your Campaign"
+          description="Fill out the form below to connect with our advertising team."
+          align="center"
+          className="mb-12"
+        />
 
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white p-6 md:p-10 rounded-3xl shadow-xl shadow-brand-navy/5 border border-gray-100">
+          <div className="rounded-2xl ring-1 ring-navy-100 bg-white p-6 md:p-10 shadow-xl shadow-navy-950/5">
             <form action={action} className="space-y-6">
-              
+
               {state?.error && (
                 <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm font-medium">
                   {state.error}
@@ -126,8 +132,8 @@ export default function CampaignEnquiryForm() {
                 />
               </div>
 
-              <div className="pt-4 border-t border-gray-100">
-                <h4 className="text-sm font-bold text-brand-navy uppercase tracking-wider mb-4">Contact Person</h4>
+              <div className="pt-4 border-t border-navy-100">
+                <h4 className="text-sm font-bold text-navy-900 uppercase tracking-wider mb-4">Contact Person</h4>
                 <div className="grid grid-cols-1 gap-6">
                   <FormField
                     id="contact_name"
