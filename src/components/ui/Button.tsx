@@ -3,7 +3,7 @@ import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'light' | 'ghost' | 'danger'
+  variant?: 'primary' | 'secondary' | 'light' | 'teal' | 'white' | 'ghost' | 'danger'
   size?: 'sm' | 'md' | 'lg'
   isLoading?: boolean
   leftIcon?: React.ReactNode
@@ -34,25 +34,29 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={twMerge(
           clsx(
             // Base interactive styles with micro-animations
-            'inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue/50 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]',
-            
+            'inline-flex items-center justify-center font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy-700/40 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]',
+
             // Variants
             {
-              // Primary Navy/Blue gradient or solid
-              'bg-brand-blue text-white hover:bg-blue-700 shadow-md shadow-brand-blue/10': variant === 'primary',
-              // Secondary Outline
-              'border border-slate-200 bg-transparent text-slate-700 hover:bg-slate-50 hover:border-slate-300': variant === 'secondary',
-              // Light Blue
-              'bg-brand-light text-brand-blue hover:bg-blue-100/80': variant === 'light',
+              // Primary — solid navy
+              'bg-navy-700 text-white hover:bg-navy-800 shadow-lg shadow-navy-900/15': variant === 'primary',
+              // Secondary — outline
+              'border border-navy-200 bg-white text-navy-800 hover:bg-navy-50 hover:border-navy-300': variant === 'secondary',
+              // Light — soft navy tint
+              'bg-navy-50 text-navy-700 hover:bg-navy-100': variant === 'light',
+              // Teal — accent
+              'bg-teal-400 text-navy-950 hover:bg-teal-500 hover:text-white shadow-lg shadow-teal-500/20': variant === 'teal',
+              // White — for use on dark/navy sections
+              'bg-white text-navy-800 hover:bg-cream-100 shadow-lg shadow-navy-950/20': variant === 'white',
               // Ghost
-              'bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900': variant === 'ghost',
+              'bg-transparent text-navy-600 hover:bg-navy-50 hover:text-navy-900': variant === 'ghost',
               // Danger
               'bg-red-600 text-white hover:bg-red-700 shadow-md shadow-red-600/10': variant === 'danger',
             },
-            
+
             // Sizes
             {
-              'px-3 py-1.5 text-xs rounded-lg gap-1.5': size === 'sm',
+              'px-3.5 py-2 text-xs rounded-lg gap-1.5': size === 'sm',
               'px-5 py-2.5 text-sm rounded-xl gap-2': size === 'md',
               'px-7 py-3.5 text-base rounded-2xl gap-2.5': size === 'lg',
             },

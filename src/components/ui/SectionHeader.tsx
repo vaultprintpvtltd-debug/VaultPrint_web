@@ -23,11 +23,11 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       } ${className}`}
     >
       {eyebrow && <Badge variant="primary">{eyebrow}</Badge>}
-      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-brand-navy">
+      <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-navy-950 text-balance leading-[1.1]">
         {title}
       </h2>
       {description && (
-        <p className="text-base sm:text-lg text-slate-500 max-w-2xl leading-relaxed">
+        <p className="text-base sm:text-lg text-navy-500 max-w-2xl leading-relaxed text-pretty">
           {description}
         </p>
       )}

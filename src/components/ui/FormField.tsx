@@ -14,7 +14,7 @@ export const FormField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement
   ({ className, label, error, as = 'input', options = [], id, ...props }, ref) => {
     const inputClasses = twMerge(
       clsx(
-        'w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue transition-all duration-200 text-sm disabled:opacity-50 disabled:bg-slate-50',
+        'w-full px-4 py-3 rounded-xl border border-navy-200 text-navy-900 bg-white placeholder-navy-300 focus:outline-none focus:ring-2 focus:ring-navy-700/25 focus:border-navy-500 transition-all duration-200 text-sm disabled:opacity-50 disabled:bg-navy-50',
         {
           'border-red-500 focus:ring-red-100 focus:border-red-500': !!error,
         }
@@ -24,7 +24,7 @@ export const FormField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement
 
     return (
       <div className="flex flex-col w-full gap-2">
-        <label htmlFor={id} className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
+        <label htmlFor={id} className="text-xs font-semibold tracking-wide text-navy-600 uppercase">
           {label} {props.required && <span className="text-red-500">*</span>}
         </label>
 
@@ -53,7 +53,7 @@ export const FormField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement
                 </option>
               ))}
             </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-navy-400">
               <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
               </svg>
