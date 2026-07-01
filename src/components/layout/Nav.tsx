@@ -3,8 +3,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Printer } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { Button } from '../ui/Button'
+import { Logo } from '../ui/Logo'
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,13 +27,12 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 sm:h-20 items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group shrink-0">
-            <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white transition-all group-hover:scale-105 shadow-md shadow-brand-blue/20">
-              <Printer size={20} className="stroke-[2.5]" />
-            </div>
-            <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-brand-navy">
-              Vault<span className="text-brand-blue">Print</span>
-            </span>
+          <Link
+            href="/"
+            className="group shrink-0 rounded-xl transition-transform hover:-translate-y-0.5"
+            aria-label="VaultPrint home"
+          >
+            <Logo size={38} />
           </Link>
 
           {/* Desktop Navigation Links */}

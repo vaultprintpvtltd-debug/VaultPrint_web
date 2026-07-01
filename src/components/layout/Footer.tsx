@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Printer } from 'lucide-react'
+import { Logo } from '../ui/Logo'
 
 // Custom SVG Icons
 const LinkedinIcon = ({ size = 20, className = "" }) => (
@@ -23,35 +23,30 @@ const TwitterIcon = ({ size = 20, className = "" }) => (
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-slate-900 border-t border-slate-800 text-slate-400">
+    <footer className="w-full bg-navy-950 text-navy-300">
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-slate-800">
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-white/10">
+
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 rounded-xl bg-brand-blue flex items-center justify-center text-white transition-all shadow-md shadow-brand-blue/20">
-                <Printer size={18} className="stroke-[2.5]" />
-              </div>
-              <span className="font-extrabold text-xl tracking-tight text-white">
-                Vault<span className="text-brand-blue">Print</span>
-              </span>
+            <Link href="/" className="inline-flex group" aria-label="VaultPrint home">
+              <Logo size={36} inverted />
             </Link>
-            <p className="text-slate-200 text-sm font-semibold">
+            <p className="text-white text-sm font-semibold">
               Secure printing, everywhere.
             </p>
-            <p className="text-slate-400 text-xs sm:text-sm max-w-sm leading-relaxed">
+            <p className="text-navy-300 text-xs sm:text-sm max-w-sm leading-relaxed">
               VaultPrint self-service kiosks bring fast, app-free, and secure cloud printing to high-footfall venues like colleges, hostels, PG residences, and government offices.
             </p>
-            <div className="flex gap-4 pt-2">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="LinkedIn">
-                <LinkedinIcon size={20} />
+            <div className="flex gap-3 pt-2">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 text-navy-200 hover:bg-teal-400 hover:text-navy-950 transition-colors" aria-label="LinkedIn">
+                <LinkedinIcon size={18} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Instagram">
-                <InstagramIcon size={20} />
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 text-navy-200 hover:bg-teal-400 hover:text-navy-950 transition-colors" aria-label="Instagram">
+                <InstagramIcon size={18} />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Twitter/X">
-                <TwitterIcon size={20} />
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 text-navy-200 hover:bg-teal-400 hover:text-navy-950 transition-colors" aria-label="Twitter/X">
+                <TwitterIcon size={18} />
               </a>
             </div>
           </div>
@@ -89,13 +84,13 @@ export default function Footer() {
                 <Link href="/about#contact" className="hover:text-white transition-colors">Contact</Link>
               </li>
               <li>
-                <span className="flex items-center gap-1.5 text-slate-600 cursor-not-allowed">
-                  Blog <span className="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded-full">Soon</span>
+                <span className="flex items-center gap-1.5 text-navy-500 cursor-not-allowed">
+                  Blog <span className="text-[10px] bg-white/10 text-navy-300 px-1.5 py-0.5 rounded-full">Soon</span>
                 </span>
               </li>
               <li>
-                <span className="flex items-center gap-1.5 text-slate-600 cursor-not-allowed">
-                  Careers <span className="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded-full">Soon</span>
+                <span className="flex items-center gap-1.5 text-navy-500 cursor-not-allowed">
+                  Careers <span className="text-[10px] bg-white/10 text-navy-300 px-1.5 py-0.5 rounded-full">Soon</span>
                 </span>
               </li>
             </ul>
@@ -120,11 +115,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-navy-400">
           <div>
             © {new Date().getFullYear()} VaultPrint Pvt Ltd. All rights reserved.
           </div>
-          <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-slate-500">
+          <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-navy-500">
             <span>CIN: U72900JH2026PTC012345</span>
             <span className="hidden md:inline">·</span>
             <span>GSTIN: 20AAACV1234A1Z1</span>
