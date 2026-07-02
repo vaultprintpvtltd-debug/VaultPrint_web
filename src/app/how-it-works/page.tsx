@@ -8,7 +8,7 @@ import SecuritySection from '@/components/sections/how-it-works/SecuritySection'
 import FaqSection from '@/components/sections/how-it-works/FaqSection'
 
 export const metadata = {
-  title: 'How It Works — VaultPrint',
+  title: 'How It Works - VaultPrint',
   description: 'Understand the simple 4-step print process of VaultPrint. Scan, upload, pay, and collect in 60 seconds with bank-grade security.',
 }
 

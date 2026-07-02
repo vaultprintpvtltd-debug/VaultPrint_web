@@ -1,129 +1,76 @@
 import React from 'react'
 import Link from 'next/link'
-import { Logo } from '../ui/Logo'
-
-// Custom SVG Icons
-const LinkedinIcon = ({ size = 20, className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
-  </svg>
-)
-
-const InstagramIcon = ({ size = 20, className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-  </svg>
-)
-
-const TwitterIcon = ({ size = 20, className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-  </svg>
-)
+import { ArrowUpRight } from 'lucide-react'
+import DecryptedText from '../ui/DecryptedText'
+import GlassIcons from '../ui/GlassIcons'
 
 export default function Footer() {
-  return (
-    <footer className="w-full bg-navy-950 text-navy-300">
-      <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-white/10">
+  const currentYear = new Date().getFullYear()
 
-          {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-flex group" aria-label="VaultPrint home">
-              <Logo size={36} inverted />
-            </Link>
-            <p className="text-white text-sm font-semibold">
-              Secure printing, everywhere.
-            </p>
-            <p className="text-navy-300 text-xs sm:text-sm max-w-sm leading-relaxed">
-              VaultPrint self-service kiosks bring fast, app-free, and secure cloud printing to high-footfall venues like colleges, hostels, PG residences, and government offices.
-            </p>
-            <div className="flex gap-3 pt-2">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 text-navy-200 hover:bg-teal-400 hover:text-navy-950 transition-colors" aria-label="LinkedIn">
-                <LinkedinIcon size={18} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 text-navy-200 hover:bg-teal-400 hover:text-navy-950 transition-colors" aria-label="Instagram">
-                <InstagramIcon size={18} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 text-navy-200 hover:bg-teal-400 hover:text-navy-950 transition-colors" aria-label="Twitter/X">
-                <TwitterIcon size={18} />
-              </a>
+  const socialIcons = [
+    { icon: <span className="font-bold">IG</span>, color: 'purple', label: 'Instagram', href: 'https://instagram.com', customClass: 'text-white' },
+    { icon: <span className="font-bold">X</span>, color: 'blue', label: 'Twitter', href: 'https://twitter.com', customClass: 'text-white' },
+    { icon: <span className="font-bold">IN</span>, color: 'indigo', label: 'LinkedIn', href: 'https://linkedin.com', customClass: 'text-white' },
+  ]
+
+  return (
+    <footer className="w-full relative overflow-hidden text-white/90 px-4 py-4 md:px-8 md:py-8 font-sans">
+      {/* Outer container with the rounded corner styling and dots */}
+      <div className="relative w-full min-h-[400px] bg-[#0c0814] rounded-3xl overflow-hidden flex flex-col justify-between pt-10 pb-8 px-8 md:pt-16 md:pb-12 md:px-16 border border-white/5">
+        
+        {/* 4 Corner Dots */}
+        <div className="absolute top-4 left-4 w-2 h-2 rounded-full bg-white/30" />
+        <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-white/30" />
+        <div className="absolute bottom-4 left-4 w-2 h-2 rounded-full bg-white/30 z-20" />
+        <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-white/30 z-20" />
+
+        {/* Top Content Row */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 relative z-20">
+          
+          {/* Left: Contacts */}
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl font-display font-medium text-white">Contacts</h2>
+            <a 
+              href="mailto:hello@vaultprint.com" 
+              className="inline-flex items-center text-vault-cyan hover:text-white transition-colors duration-300 font-medium text-sm md:text-base border-b border-vault-cyan/30 hover:border-white pb-0.5"
+            >
+              hello@vaultprint.com
+              <ArrowUpRight size={16} className="ml-1" />
+            </a>
+          </div>
+
+          {/* Right: Copyright & Links */}
+          <div className="flex flex-col md:items-end space-y-8 md:space-y-16">
+            <div className="text-white/40 text-sm">
+              © {currentYear} VaultPrint Pvt Ltd
+            </div>
+            
+            <div className="flex flex-wrap md:justify-end gap-x-6 gap-y-4 text-sm font-medium items-center">
+              <div className="text-[10px] md:text-[12px]">
+                <GlassIcons items={socialIcons} className="gap-[1.5em] py-0" />
+              </div>
+              
+              <Link href="/for-venues" className="group flex items-center hover:text-vault-cyan transition-colors">
+                For Venues <ArrowUpRight size={14} className="ml-0.5 opacity-70 group-hover:opacity-100" />
+              </Link>
+              <Link href="/privacy" className="group flex items-center hover:text-vault-cyan transition-colors">
+                Privacy <ArrowUpRight size={14} className="ml-0.5 opacity-70 group-hover:opacity-100" />
+              </Link>
             </div>
           </div>
-
-          {/* Column 2 — Product */}
-          <div className="space-y-4">
-            <h3 className="text-white text-xs font-semibold tracking-wider uppercase">Product</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link>
-              </li>
-              <li>
-                <Link href="/for-venues" className="hover:text-white transition-colors">For Venues</Link>
-              </li>
-              <li>
-                <Link href="/franchise" className="hover:text-white transition-colors">Franchise</Link>
-              </li>
-              <li>
-                <Link href="/advertising" className="hover:text-white transition-colors">Advertising</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3 — Company */}
-          <div className="space-y-4">
-            <h3 className="text-white text-xs font-semibold tracking-wider uppercase">Company</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
-              </li>
-              <li>
-                <Link href="/about#contact" className="hover:text-white transition-colors">Contact</Link>
-              </li>
-              <li>
-                <span className="flex items-center gap-1.5 text-navy-500 cursor-not-allowed">
-                  Blog <span className="text-[10px] bg-white/10 text-navy-300 px-1.5 py-0.5 rounded-full">Soon</span>
-                </span>
-              </li>
-              <li>
-                <span className="flex items-center gap-1.5 text-navy-500 cursor-not-allowed">
-                  Careers <span className="text-[10px] bg-white/10 text-navy-300 px-1.5 py-0.5 rounded-full">Soon</span>
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4 — Legal */}
-          <div className="space-y-4">
-            <h3 className="text-white text-xs font-semibold tracking-wider uppercase">Legal</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-              </li>
-              <li>
-                <Link href="/refund" className="hover:text-white transition-colors">Refund Policy</Link>
-              </li>
-            </ul>
-          </div>
-
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-navy-400">
-          <div>
-            © {new Date().getFullYear()} VaultPrint Pvt Ltd. All rights reserved.
-          </div>
-          <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-navy-500">
-            <span>CIN: U72900JH2026PTC012345</span>
-            <span className="hidden md:inline">·</span>
-            <span>GSTIN: 20AAACV1234A1Z1</span>
-          </div>
+        {/* Bottom Giant Text */}
+        <div className="absolute -bottom-[5%] left-1/2 -translate-x-1/2 w-[95%] pointer-events-none select-none flex justify-center z-10">
+          <DecryptedText
+            text="vaultprint"
+            speed={80}
+            maxIterations={20}
+            animateOn="view"
+            className="font-display font-bold leading-none tracking-tighter text-white/5 whitespace-nowrap"
+            encryptedClassName="font-display font-bold leading-none tracking-tighter text-white/5 whitespace-nowrap"
+            style={{ fontSize: 'clamp(8rem, 24vw, 32rem)' }}
+          />
         </div>
       </div>
     </footer>

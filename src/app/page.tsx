@@ -9,7 +9,7 @@ import ForBusinessesSection from '@/components/sections/home/ForBusinessesSectio
 import CtaBannerSection from '@/components/sections/home/CtaBannerSection'
 
 export const metadata = {
-  title: 'VaultPrint — Secure Self-Service Printing Kiosks in India',
+  title: 'VaultPrint - Secure Self-Service Printing Kiosks in India',
   description: 'Print from your phone in under 60 seconds. No app, no queue, no staff.',
 }
 

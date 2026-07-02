@@ -23,7 +23,6 @@ export interface CardNavProps {
   items: CardNavItem[];
   className?: string;
   ease?: string;
-  baseColor?: string;
   menuColor?: string;
   buttonBgColor?: string;
   buttonTextColor?: string;
@@ -36,7 +35,6 @@ const CardNav: React.FC<CardNavProps> = ({
   items,
   className = '',
   ease = 'power3.out',
-  baseColor = '#fff',
   menuColor,
   buttonBgColor = '#120F17',
   buttonTextColor = '#fff',
@@ -141,17 +139,27 @@ const CardNav: React.FC<CardNavProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, [isExpanded]);
 
-  const toggleMenu = () => {
+  const openMenu = () => {
     const tl = tlRef.current;
-    if (!tl) return;
+    if (!tl || isExpanded) return;
+    setIsHamburgerOpen(true);
+    setIsExpanded(true);
+    tl.play(0);
+  };
+
+  const closeMenu = () => {
+    const tl = tlRef.current;
+    if (!tl || !isExpanded) return;
+    setIsHamburgerOpen(false);
+    tl.eventCallback('onReverseComplete', () => setIsExpanded(false));
+    tl.reverse();
+  };
+
+  const toggleMenu = () => {
     if (!isExpanded) {
-      setIsHamburgerOpen(true);
-      setIsExpanded(true);
-      tl.play(0);
+      openMenu();
     } else {
-      setIsHamburgerOpen(false);
-      tl.eventCallback('onReverseComplete', () => setIsExpanded(false));
-      tl.reverse();
+      closeMenu();
     }
   };
 
@@ -161,12 +169,13 @@ const CardNav: React.FC<CardNavProps> = ({
 
   return (
     <div
-      className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-[99] top-[1.2em] md:top-[2em] ${className}`}
+      className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-[99] top-[1.2em] md:top-[2em] ${className}`}
     >
       <nav
         ref={navRef}
-        className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-2xl shadow-md relative overflow-hidden will-change-[height]`}
-        style={{ backgroundColor: baseColor }}
+        onMouseEnter={openMenu}
+        onMouseLeave={closeMenu}
+        className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-2xl shadow-lg relative overflow-hidden will-change-[height] backdrop-blur-xl border border-white/30 bg-white/70`}
       >
         <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-4 z-[2]">
           <div
@@ -219,7 +228,7 @@ const CardNav: React.FC<CardNavProps> = ({
           {(items || []).slice(0, 3).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
-              className="nav-card select-none relative flex flex-col gap-2 p-[16px_20px] rounded-xl min-w-0 flex-[1_1_auto] h-auto min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%]"
+              className="nav-card select-none relative flex flex-col gap-2 p-[16px_20px] rounded-xl min-w-0 flex-[1_1_auto] h-auto min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%] backdrop-blur-md border border-white/20 shadow-sm"
               ref={setCardRef(idx)}
               style={{ backgroundColor: item.bgColor, color: item.textColor }}
             >

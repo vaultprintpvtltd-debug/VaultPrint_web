@@ -12,7 +12,7 @@ export default function Nav() {
   const navItems: CardNavItem[] = [
     {
       label: 'Discover',
-      bgColor: '#F1F5F9', // vault-frost
+      bgColor: '#F1F5F9b3', // vault-frost (transparent)
       textColor: '#060010', // vault-deep
       links: [
         { label: 'How It Works', href: '/how-it-works', ariaLabel: 'Learn how VaultPrint works' },
@@ -21,7 +21,7 @@ export default function Nav() {
     },
     {
       label: 'Business',
-      bgColor: '#EFF6FF', // slightly darker vault-mist (or custom light blue)
+      bgColor: '#EFF6FFb3', // light blue (transparent)
       textColor: '#060010',
       links: [
         { label: 'For Venues', href: '/for-venues', ariaLabel: 'Solutions for venues' },
@@ -31,7 +31,7 @@ export default function Nav() {
     },
     {
       label: 'Company',
-      bgColor: '#0EA5E9', // vault-blue
+      bgColor: '#0EA5E9b3', // vault-blue (transparent)
       textColor: '#FFFFFF',
       links: [
         { label: 'About & Contact', href: '/about', ariaLabel: 'About us and contact information' },
@@ -46,7 +46,6 @@ export default function Nav() {
       aria-label="VaultPrint home"
     >
       <Logo size={28} />
-      <span className="font-display font-bold text-lg text-vault-deep tracking-tight">VaultPrint</span>
     </Link>
   )
 
@@ -55,7 +54,6 @@ export default function Nav() {
       <CardNav
         logo={logoNode}
         items={navItems}
-        baseColor="#ffffff"
         menuColor="#060010"
         buttonBgColor="#060010"
         buttonTextColor="#ffffff"

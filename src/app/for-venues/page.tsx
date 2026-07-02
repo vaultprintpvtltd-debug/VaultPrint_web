@@ -11,7 +11,7 @@ import VenueBenefitsSection from '@/components/sections/for-venues/VenueBenefits
 import VenueEnquiryForm from '@/components/sections/for-venues/VenueEnquiryForm'
 
 export const metadata = {
-  title: 'For Venues — Host a VaultPrint Kiosk',
+  title: 'For Venues - Host a VaultPrint Kiosk',
   description: 'Turn unused space into a premium service for your visitors. VaultPrint supplies, installs, and maintains a fully automated printing kiosk at your venue — at zero cost.',
 }
 

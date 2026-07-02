@@ -5,7 +5,7 @@ import AboutTeam from '@/components/sections/about/AboutTeam'
 import ContactSection from '@/components/sections/about/ContactSection'
 
 export const metadata: Metadata = {
-  title: 'About VaultPrint — Built for Private, Self-Service Printing in India',
+  title: 'About VaultPrint - Built for Private, Self-Service Printing in India',
   description:
     'Learn about VaultPrint — why we built it, what we believe, and how to get in touch.',
 }

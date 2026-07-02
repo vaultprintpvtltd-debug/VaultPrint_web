@@ -10,7 +10,7 @@ import RevenueModel from '@/components/sections/franchise/RevenueModel'
 import FranchiseApplicationForm from '@/components/sections/franchise/FranchiseApplicationForm'
 
 export const metadata = {
-  title: 'Franchise Opportunity — VaultPrint',
+  title: 'Franchise Opportunity - VaultPrint',
   description: 'Run your own VaultPrint business. Own and operate VaultPrint kiosks in your city with full operational support from day one.',
 }
 

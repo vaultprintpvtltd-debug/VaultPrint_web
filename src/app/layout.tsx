@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Manrope } from 'next/font/google'
+import { Space_Grotesk, Manrope, Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import AnnouncementBanner from '@/components/layout/AnnouncementBanner'
 import './globals.css'
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -32,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
+    <html lang="en" className={cn(spaceGrotesk.variable, manrope.variable, "font-sans", geist.variable)}>
       <body className="font-sans antialiased bg-vault-frost text-vault-deep">
         <AnnouncementBanner />
         <Nav />

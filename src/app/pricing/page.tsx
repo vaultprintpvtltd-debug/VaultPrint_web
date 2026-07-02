@@ -5,7 +5,7 @@ import PricingDetails from '@/components/sections/pricing/PricingDetails'
 import WaitlistForm from '@/components/sections/pricing/WaitlistForm'
 
 export const metadata: Metadata = {
-  title: 'Pricing — Transparent Per-Page Print Rates',
+  title: 'Pricing - Transparent Per-Page Print Rates',
   description:
     'VaultPrint pricing starts at ₹2 per A4 page. No service charges, no hidden fees. The price you see is the price you pay.',
 }
